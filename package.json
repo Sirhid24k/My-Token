@@ -1,0 +1,26 @@
+{
+  "name": "my-token",
+  "version": "1.0.0",
+  "description": "A Simple ERC-20 Token",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sirhid24k/My-Token.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sirhid24k/My-Token/issues"
+  },
+  "homepage": "https://github.com/Sirhid24k/My-Token#readme",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^6.0.0",
+    "@openzeppelin/contracts": "^5.3.0",
+    "dotenv": "^17.2.0",
+    "hardhat": "^2.25.0"
+  }
+}
