@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 contract MyToken is ERC20 {
     address public owner;
 
-    constructor() ERC20("My Awesome Token", "MAT") {
+    constructor() ERC20("My Token", "MYT") {
         // Set Owner of contract
         owner = msg.sender;
         // Mint an initial supply of 1,000,000 tokens
