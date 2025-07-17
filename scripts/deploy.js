@@ -5,7 +5,10 @@ async function main() {
   const [deployer] = await hre.ethers.getSigners();
 
   console.log('Deploying contracts with the account:', deployer.address);
-  console.log('Account balance:', (await deployer.getBalance()).toString());
+  console.log(
+    'Account balance:',
+    (await hre.ethers.provider.getBalance(deployer.address)).toString()
+  );
 
   // Get the ContractFactory for MyToken
   const Token = await hre.ethers.getContractFactory('MyToken');
