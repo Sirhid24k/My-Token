@@ -16,8 +16,11 @@ contract TokenSale is Ownable {
     event EthWithdrawn(address recipient, uint256 amount);
 
     // Constructor: Takes the address of the deployed ERC-20 token and its price
-    constructor(address _tokenAddress, uint256 _tokenPriceInWei) {
-        // It defaults msg.sender as owner
+    constructor(
+        address _tokenAddress,
+        uint256 _tokenPriceInWei
+    ) Ownable(msg.sender) {
+        // Explicitly set the owner
         myToken = ERC20(_tokenAddress); // Connect to your deployed MyToken contract
         tokenPriceInWei = _tokenPriceInWei; // Set price of token
     }
