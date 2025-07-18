@@ -17,8 +17,7 @@ contract TokenSale is Ownable {
 
     // Constructor: Takes the address of the deployed ERC-20 token and its price
     constructor(address _tokenAddress, uint256 _tokenPriceInWei) {
-        Ownable(); // It defaults msg.sender as owner
-        // If you are using an older OZ version, it might be `Ownable(msg.sender)`
+        // It defaults msg.sender as owner
         myToken = ERC20(_tokenAddress); // Connect to your deployed MyToken contract
         tokenPriceInWei = _tokenPriceInWei; // Set price of token
     }
