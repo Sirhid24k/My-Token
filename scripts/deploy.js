@@ -19,7 +19,7 @@ async function main() {
   // Define the token price
   // 1ETH = 1e18 wei, so 0.0001 ETH = 0.0001 * 1e18 wei
   // 1MYT = 0.0001 ETH
-  const tokenPriceInWei = hre.ethers.utils.parseEther('0.0001');
+  const tokenPriceInWei = hre.ethers.parseEther('0.0001');
 
   // Deploy the TokenSale contract
   // The constructor arguments for TokenSale are: _tokenAddress, _tokenPriceInWei
