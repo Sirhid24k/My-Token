@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>My Token DApp</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>My Awesome Token Sale</h1>
+
+      <div class="wallet-info">
+        <h2>Wallet Connection</h2>
+        <p>Status: <span id="connectStatus">Not Connected</span></p>
+        <p>Account: <span id="accountAddress">N/A</span></p>
+        <p>ETH Balance: <span id="ethBalance">N/A</span></p>
+        <button id="connectWalletBtn">Connect Wallet</button>
+      </div>
+
+      <hr />
+
+      <div class="token-info">
+        <h2>MyToken (MYT) Info</h2>
+        <p>MYT Address: <span id="myTokenContractAddress">Loading...</span></p>
+        <p>Your MYT Balance: <span id="myTokenBalance">N/A</span></p>
+        <p>TokenSale MYT Balance: <span id="tokenSaleMyTBalance">N/A</span></p>
+      </div>
+
+      <hr />
+
+      <div class="buy-tokens">
+        <h2>Buy MYT Tokens</h2>
+        <p>Price: <span id="tokenPrice">Loading...</span> ETH per MYT</p>
+        <input
+          type="number"
+          id="ethAmountToBuy"
+          placeholder="ETH amount to pay"
+          step="0.0001"
+        />
+        <button id="buyTokensBtn">Buy MYT</button>
+        <p id="buyMessage" class="message"></p>
+      </div>
+
+      <hr />
+
+      <div class="withdraw-eth">
+        <h2>Withdraw ETH (Owner Only)</h2>
+        <input
+          type="number"
+          id="ethAmountToWithdraw"
+          placeholder="ETH amount to withdraw"
+          step="0.001"
+        />
+        <button id="withdrawEthBtn">Withdraw ETH</button>
+        <p id="withdrawMessage" class="message"></p>
+      </div>
+    </div>
+
+    <script src="https://cdn.ethers.io/5.7.2/ethers.umd.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
