@@ -3,60 +3,156 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="MyToken (MYT) - A decentralized token sale platform">
+    <meta name="keywords" content="ethereum, token, cryptocurrency, web3, dapp">
     <link rel="stylesheet" href="style.css" />
-    <title>My Token DApp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>MyToken DApp - Decentralized Token Sale</title>
   </head>
   <body>
-    <div class="container">
-      <h1>My Awesome Token Sale</h1>
-
-      <div class="wallet-info">
-        <h2>Wallet Connection</h2>
-        <p>Status: <span id="connectStatus">Not Connected</span></p>
-        <p>Account: <span id="accountAddress">N/A</span></p>
-        <p>ETH Balance: <span id="ethBalance">N/A</span></p>
-        <button id="connectWalletBtn">Connect Wallet</button>
-      </div>
-
-      <hr />
-
-      <div class="token-info">
-        <h2>MyToken (MYT) Info</h2>
-        <p>MYT Address: <span id="myTokenContractAddress">Loading...</span></p>
-        <p>Your MYT Balance: <span id="myTokenBalance">N/A</span></p>
-        <p>TokenSale MYT Balance: <span id="tokenSaleMyTBalance">N/A</span></p>
-      </div>
-
-      <hr />
-
-      <div class="buy-tokens">
-        <h2>Buy MYT Tokens</h2>
-        <p>Price: <span id="tokenPrice">Loading...</span> ETH per MYT</p>
-        <input
-          type="number"
-          id="ethAmountToBuy"
-          placeholder="ETH amount to pay"
-          step="0.0001"
-        />
-        <button id="buyTokensBtn">Buy MYT</button>
-        <p id="buyMessage" class="message"></p>
-      </div>
-
-      <hr />
-
-      <div class="withdraw-eth">
-        <h2>Withdraw ETH (Owner Only)</h2>
-        <input
-          type="number"
-          id="ethAmountToWithdraw"
-          placeholder="ETH amount to withdraw"
-          step="0.001"
-        />
-        <button id="withdrawEthBtn">Withdraw ETH</button>
-        <p id="withdrawMessage" class="message"></p>
-      </div>
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+      <div class="loading-spinner"></div>
+      <p id="loadingText">Loading...</p>
     </div>
 
+    <div class="container">
+      <header class="app-header">
+        <h1>🪙 MyToken Sale</h1>
+        <p class="app-subtitle">Decentralized Token Trading Platform</p>
+      </header>
+
+      <main class="app-main">
+        <!-- Wallet Connection Section -->
+        <section class="wallet-section card">
+          <div class="card-header">
+            <h2>💼 Wallet Connection</h2>
+            <div class="status-indicator">
+              <div class="status-dot" id="statusDot"></div>
+              <span id="connectStatus">Not Connected</span>
+            </div>
+          </div>
+          
+          <div class="wallet-details">
+            <div class="info-row">
+              <label>Account:</label>
+              <span id="accountAddress" class="address-display">N/A</span>
+            </div>
+            <div class="info-row">
+              <label>ETH Balance:</label>
+              <span id="ethBalance" class="balance-display">N/A</span>
+            </div>
+            <div class="info-row">
+              <label id="networkInfo">Network: Not Connected</label>
+            </div>
+          </div>
+          
+          <button id="connectWalletBtn" class="btn btn-primary wallet-btn">
+            <span class="btn-text">Connect Wallet</span>
+            <span class="btn-icon">🔗</span>
+          </button>
+        </section>
+
+        <!-- Token Information Section -->
+        <section class="token-info card">
+          <div class="card-header">
+            <h2>🪙 Token Information</h2>
+          </div>
+          
+          <div class="token-stats">
+            <div class="stat-item">
+              <label>Contract Address:</label>
+              <span id="myTokenContractAddress" class="contract-address">N/A</span>
+            </div>
+            <div class="stat-item">
+              <label>Your Balance:</label>
+              <span id="myTokenBalance" class="token-balance">N/A</span>
+            </div>
+            <div class="stat-item">
+              <label>Sale Contract Balance:</label>
+              <span id="tokenSaleMyTBalance" class="token-balance">N/A</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Buy Tokens Section -->
+        <section class="buy-section card">
+          <div class="card-header">
+            <h2>🛒 Buy MYT Tokens</h2>
+            <div class="price-display">
+              <span class="price-label">Price:</span>
+              <span id="tokenPrice" class="price-value">N/A</span>
+              <span class="price-unit">ETH per MYT</span>
+            </div>
+          </div>
+          
+          <div class="transaction-form">
+            <div class="input-group">
+              <label for="ethAmountToBuy">ETH Amount:</label>
+              <input
+                type="number"
+                id="ethAmountToBuy"
+                placeholder="0.001"
+                step="0.0001"
+                min="0"
+                class="number-input"
+              />
+            </div>
+            
+            <button id="buyTokensBtn" class="btn btn-success transaction-btn" disabled>
+              <span class="btn-text">Buy MYT Tokens</span>
+              <span class="btn-icon">💰</span>
+            </button>
+            
+            <div id="buyMessage" class="message"></div>
+          </div>
+        </section>
+
+        <!-- Withdraw Section (Owner Only) -->
+        <section class="withdraw-section card">
+          <div class="card-header">
+            <h2>🏦 Withdraw ETH</h2>
+            <span class="owner-badge">Owner Only</span>
+          </div>
+          
+          <div class="transaction-form">
+            <div class="input-group">
+              <label for="ethAmountToWithdraw">ETH Amount:</label>
+              <input
+                type="number"
+                id="ethAmountToWithdraw"
+                placeholder="0.01"
+                step="0.001"
+                min="0"
+                class="number-input"
+                disabled
+              />
+            </div>
+            
+            <button id="withdrawEthBtn" class="btn btn-warning transaction-btn" disabled title="Connect wallet to enable">
+              <span class="btn-text">Withdraw ETH</span>
+              <span class="btn-icon">💸</span>
+            </button>
+            
+            <div id="withdrawMessage" class="message"></div>
+          </div>
+        </section>
+      </main>
+      
+      <footer class="app-footer">
+        <p>Built with ❤️ using Ethereum & Hardhat</p>
+        <div class="footer-links">
+          <a href="#" target="_blank" rel="noopener noreferrer">Documentation</a>
+          <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Web3Modal Dependencies -->
+    <script src="https://unpkg.com/web3modal@1.9.12/dist/index.js"></script>
+    <script src="https://unpkg.com/@walletconnect/web3-provider@1.8.0/dist/umd/index.min.js"></script>
     <script src="https://cdn.ethers.io/5.7.2/ethers.umd.min.js"></script>
     <script src="script.js"></script>
   </body>
